@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Kebaya Lounge | Authentic Modern Peranakan Café</title>
+    <style>
+        /* --- Culture-Inspired Design Tokens --- */
+        :root {
+            --bg-cream: #fdfbf7;
+            --clay-terracotta: #c85a32;
+            --peranakan-teal: #0d7a87;
+            --gold-accent: #d4af37;
+            --text-dark: #2c2523;
+            --text-muted: #6e625f;
+            --border-soft: #f0eae1;
+            --font-serif: "Georgia", serif;
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* --- Layout & Utilities --- */
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .grid {
+            display: grid;
+            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* --- Typography & Buttons --- */
+        h1, h2, h3 {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            color: var(--clay-terracotta);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        /* Intricate heritage-style underline decoration */
+        .section-title::after {
+            content: "❖ ❖ ❖";
+            display: block;
+            font-size: 1rem;
+            color: var(--gold-accent);
+            margin-top: 0.5rem;
+            letter-spacing: 4px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--peranakan-teal);
+            color: #ffffff;
+            padding: 0.85rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            border: 1px solid transparent;
+        }
+
+        .btn:hover {
+            background-color: #085862;
+            transform: translateY(-1px);
+        }
+
+        /* --- Navigation Header --- */
+        header {
+            background-color: rgba(253, 251, 247, 0.95);
+            border-bottom: 3px double var(--gold-accent);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 5rem;
+        }
+
+        .logo {
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            line-height: 1;
+        }
+
+        .logo span {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--peranakan-teal);
+            letter-spacing: 3px;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--peranakan-teal);
+        }
+
+        /* --- Hero Section --- */
+        #hero {
+            padding: 8rem 0;
+            text-align: center;
+            /* Elegant, tile-inspired background styling using pure CSS */
+            background: radial-gradient(circle, rgba(13,122,135,0.06) 10%, transparent 11%), 
+                        radial-gradient(circle, rgba(200,90,50,0.04) 10%, transparent 11%);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        .hero-content h2 {
+            font-size: 3.5rem;
+            color: var(--clay-terracotta);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-content p {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.35rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        /* --- Story / Heritage Section --- */
+        #heritage {
+            background-color: #f7f2e8;
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        .story-block {
+            max-width: 750px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .story-block p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- Curated Menu Section --- */
+        .menu-card {
+            background: #ffffff;
+            border: 1px solid var(--border-soft);
+            border-top: 4px solid var(--peranakan-teal);
+            padding: 2rem;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.01);
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px dashed var(--border-soft);
+            padding-bottom: 0.5rem;
+        }
+
+        .menu-header h3 {
+            font-size: 1.25rem;
+            color: var(--text-dark);
+        }
+
+        .menu-price {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            color: var(--clay-terracotta);
+        }
+
+        .menu-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* --- Find Us & Hours Section --- */
+        #visit {
+            background-color: #ffffff;
+            border-top: 1px solid var(--border-soft);
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        .tile-map {
+            background-color: var(--bg-cream);
+            border: 1px solid var(--border-soft);
+            padding: 2.5rem;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Subtle Peranakan structural accent */
+        .tile-map::before {
+            content: "";
+            position: absolute;
+            top: 10px; left: 10px; right: 10px; bottom: 10px;
+            border: 1px dashed var(--gold-accent);
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .hours-table td {
+            padding: 0.85rem 0;
+            border-bottom: 1px solid var(--border-soft);
+            font-size: 1rem;
+        }
+
+        .hours-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .hours-table td:last-child {
+            text-align: right;
+            color: var(--peranakan-teal);
+            font-weight: 600;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--text-dark);
+            color: #f7f2e8;
+            padding: 3rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* --- Mobile-First Media Queries --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Keeps mobile viewport exceptionally clean */
+            }
+
+            .hero-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.15rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 3.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <h1>The Kebaya Lounge</h1>
+                <span>Café & Nonya Bistro</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#heritage">Our Roots</a></li>
+                <li><a href="#menu">Signature Flavours</a></li>
+                <li><a href="#visit">Find Us</a></li>
+            </ul>
+            <a href="#menu" class="btn" style="padding: 0.5rem 1.25rem; font-size: 0.75rem;">View Menu</a>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container hero-content">
+            <h2>Timeless Heritage,<br>Freshly Brewed.</h2>
+            <p>Experience the rich tapestry of authentic Nyonya delicacies reimagined for the modern palate in an intimate, old-world space.</p>
+            <a href="#visit" class="btn">Reserve a Table</a>
+        </div>
+    </section>
+
+    <section id="heritage">
+        <div class="container story-block">
+            <h2 class="section-title">A Symphony of Spices</h2>
+            <p>At The Kebaya Lounge, we honor generations of culinary matriarchs. Our kitchen preserves the intricate complexity of traditional base pastes
